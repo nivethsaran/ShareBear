@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form method="post" action="/">
+    <div class="container form-inline codename">
+        <input name="codename" id="codename" class="form-control" type="text" placeholder="Enter Code Name here"
+               aria-label="Enter Code Name here" value="Untitled" onblur="validateName()"
+               onkeyup="validateName()" required>
+        <label for="codename" id="codenamelabel"></label>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-lg-8 col-sm-12">
+                <textarea rows="10" class="code" name="code" id="code"></textarea>
+            </div>
+            <div class="col col-lg-4 col-sm-12">
+                <div class="card text-white bg-dark">
+                    <div class="card-header border-light ">
+                        <h4 class="font-weight-normal">Options</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="custom-control custom-switch">
+                            <input name="customSwitch1" type="checkbox" class="custom-control-input"
+                                   id="customSwitch1" onclick="enableOrDisablePin()">
+                            <label class="custom-control-label" for="customSwitch1">PIN Protection</label>
+                        </div>
+                        <br>
+                        <div class="custom-control custom-switch">
+                            <input name="customSwitch2" type="checkbox" class="custom-control-input"
+                                   id="customSwitch2" onclick="toggleExecutable()">
+                            <label class="custom-control-label" for="customSwitch2">Executable</label>
+                        </div>
+                        <br>
+                        <select name="language" id="languages" class="dropdown form-control"
+                                onchange="changeCode()">
+                            <option selected value="C">C</option>
+                            <option value="C++">C++</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+
+                        </select>
+                        <br>
+                        <input name="PIN" id="PIN" class="form-control" type="text"
+                               placeholder="Enter private access PIN"
+                               aria-label="Enter Code Name here" disabled>
+                        <br>
+
+                        <button class="btn btn-outline-success" id="savebutton" type="submit">Save</button>
+                        <button disabled id="executebutton" onclick="executeCode('{{ baseurl }}')" class="btn btn-outline-success" type="button">Execute</button>
+                        <hr>
+                        <p>*You can also drag and drop a file to the editor
+                        <p>
+                            <br>
+                            <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div id="execution" class="container-fluid" hidden>
+        <div class="row">
+            <div class="col-lg-8 col col-sm-12">
+                <label class="textarealabel" for="input">Enter custom input here if any</label>
+                <textarea name="input" id="input" class="compiler1" rows="10"
+                          placeholder="Enter Custom input here" >Not Implemented</textarea>
+            </div>
+            <div class="col-lg-4 col col-sm-12">
+                <label class="textarealabel" for="output">Compiled Output</label>
+                <textarea name="output" id="output" class="compiler2" rows="10" placeholder="" readonly>Not Implemented(Not Executed)</textarea>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+{% endblock %}
+{#<div>#}
+{#    <p><a target="_blank" href="https://icons8.com/icons/set/bear">Bear icon</a> icon by <a target="_blank"#}
+{#                                                                                            href="https://icons8.com">Icons8</a>#}
+{#    </p>#}
+{#</div>#}
+
+
+<!-- JavaScript Libs -->

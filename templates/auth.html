@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="login-page">
+        <div class="form">
+            <form action="/{{ code_id }}" method="post" class="login-form">
+                <label for="pin" id="pinlabel" class="pinlabel">
+                    {% with message = get_flashed_messages() %}
+                        {% if message %}
+                            {% for messages in message %}
+                                {{ messages }}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </label>
+                <input id="pin" type="text" name="PIN" placeholder="Enter PIN here"/>
+                <input type="submit" title="Authenticate">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

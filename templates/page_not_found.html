@@ -1,0 +1,10 @@
+{% extends 'layout_without_nav.html' %}
+
+{% block content %}
+    <div class="error-page">
+        <h2>Error 404</h2>
+        <h3>URL kinda sus...</h3>
+        <img class="impostor" src="{{ url_for('static', filename='impostor.png') }}">
+    </div>
+
+{% endblock %}

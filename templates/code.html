@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <form method="get" action="/">
+        <div class=" container form-inline codename">
+            <input id="codename" class="form-control" type="text" placeholder="Enter Code Name here"
+                   aria-label="Enter Code Name here" value="{{ coderes['name'] }}" onblur="validateName()"
+                   onkeyup="validateName()" required readonly>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-lg-8 col-sm-12">
+                    <textarea rows="10" class="code" id="code">{{ coderes['code'] }}</textarea>
+                </div>
+                <div class="col col-lg-4 col-sm-12">
+                    <div class="card text-white bg-dark">
+                        <div class="card-header border-light ">
+                            <h4 class="font-weight-normal">Options</h4>
+                        </div>
+                        <div class="card-body">
+                            <input id="link" class="shareablelink" type="text" value="{{ baseurl }}" readonly>
+                            <button id="copybutton" class="copybutton" onclick="copyLink()" type="button">Copy</button>
+                            <br><br>
+                            <img class="qrcode" src="{{ qrcode(baseurl) }}">
+                            <br>
+                            <button class="btn btn-outline-success" id="savebutton" type="submit">Save</button>
+                            <button class="btn btn-outline-success" type="button">Execute</button>
+                            <hr>
+                            <p>*You can also drag and drop a file to the editor
+                            <p>
+                                <br>
+                                <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% if coderes['executable']== True %}
+            <div id="execution" class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col col-sm-12">
+                        <label class="textarealabel" for="input">Enter custom input here if any</label>
+                        <textarea id="input" class="compiler1" rows="10"
+                                  placeholder="Enter Custom input here" readonly>{{ coderes['input'] }}</textarea>
+                    </div>
+                    <div class="col-lg-4 col col-sm-12">
+                        <label class="textarealabel" for="output">Compiled Output</label>
+                        <textarea id="output" class="compiler2" rows="10" placeholder="" readonly>{{ coderes['output'] }}</textarea>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </form>
+
+
+{% endblock %}
+{#<div>#}
+{#    <p><a target="_blank" href="https://icons8.com/icons/set/bear">Bear icon</a> icon by <a target="_blank"#}
+{#                                                                                            href="https://icons8.com">Icons8</a>#}
+{#    </p>#}
+{#</div>#}
+
+
+<!-- JavaScript Libs -->

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static',filename='bearlogo.png') }}" />
+    <link href="https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+    <link rel="stylesheet" href="https://codemirror.net/theme/material.css">
+    <link rel="stylesheet" href="https://codemirror.net/theme/shadowfox.css">
+    <link rel="stylesheet" href="https://codemirror.net/addon/lint/lint.css">
+    <link rel="stylesheet" href="https://codemirror.net/addon/scroll/simplescrollbars.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+{% block content %}
+
+
+
+{% endblock %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+<script src="https://codemirror.net/lib/codemirror.js"></script>
+<script src="https://codemirror.net/mode/javascript/javascript.js"></script>
+<script src="https://codemirror.net/mode/python/python.js"></script>
+<script src="https://codemirror.net/mode/clike/clike.js"></script>
+<script src="https://codemirror.net/addon/edit/closebrackets.js"></script>
+<script src="https://codemirror.net/addon/lint/lint.js"></script>
+<script src="https://codemirror.net/addon/scroll/simplescrollbars.js"></script>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
