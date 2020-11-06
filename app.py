@@ -1,7 +1,8 @@
 import json
 import os
 
-from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, abort, session
+from flask import Flask, render_template, request, redirect, url_for, flash, abort, session
+from secret import TOKEN, SECRET, JDOODLEID, JDOODLESECRET
 from deta import Deta
 from flask_qrcode import QRcode
 import requests
@@ -15,13 +16,21 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 
-deta = Deta(os.environ['TOKEN'])
+# deta = Deta(os.environ['TOKEN'])
+# codes = deta.Base("codes")
+# app.config['SECRET_KEY'] = os.environ['SECRET']
+# app.register_error_handler(404, page_not_found)
+# qrcode = QRcode(app)
+# JDOODLEID = os.environ['JDOODLEID']
+# JDOODLESECRET = os.environ['JDOODLESECRET']
+
+deta = Deta(TOKEN)
 codes = deta.Base("codes")
-app.config['SECRET_KEY'] = os.environ['SECRET']
+app.config['SECRET_KEY'] = SECRET
 app.register_error_handler(404, page_not_found)
 qrcode = QRcode(app)
-JDOODLEID = os.environ['JDOODLEID']
-JDOODLESECRET = os.environ['JDOODLESECRET']
+JDOODLEID = JDOODLEID
+JDOODLESECRET = JDOODLESECRET
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -156,7 +165,7 @@ def execute():
     data['stdin'] = request.form['input']
     data['language'] = language
     data['versionIndex'] = 0
-
+    
     output = requests.post(jdoodle_url, json=data).text
     print(output)
     return json.loads(output)['output'].replace('\n', ' \r\n ')
