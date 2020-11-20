@@ -153,9 +153,11 @@ def getExecLanguage(language):
     elif language == 'C++':
         return 'cpp14'
 
-@app.route('/about',methods=['GET'])
+
+@app.route('/about', methods=['GET'])
 def about():
     return render_template('about.html')
+
 
 @app.route('/execute', methods=['POST'])
 def execute():
