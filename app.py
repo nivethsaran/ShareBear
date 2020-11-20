@@ -16,21 +16,21 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 
-# deta = Deta(os.environ['TOKEN'])
-# codes = deta.Base("codes")
-# app.config['SECRET_KEY'] = os.environ['SECRET']
-# app.register_error_handler(404, page_not_found)
-# qrcode = QRcode(app)
-# JDOODLEID = os.environ['JDOODLEID']
-# JDOODLESECRET = os.environ['JDOODLESECRET']
-
-deta = Deta(TOKEN)
+deta = Deta(os.environ['TOKEN'])
 codes = deta.Base("codes")
-app.config['SECRET_KEY'] = SECRET
+app.config['SECRET_KEY'] = os.environ['SECRET']
 app.register_error_handler(404, page_not_found)
 qrcode = QRcode(app)
-JDOODLEID = JDOODLEID
-JDOODLESECRET = JDOODLESECRET
+JDOODLEID = os.environ['JDOODLEID']
+JDOODLESECRET = os.environ['JDOODLESECRET']
+
+# deta = Deta(TOKEN)
+# codes = deta.Base("codes")
+# app.config['SECRET_KEY'] = SECRET
+# app.register_error_handler(404, page_not_found)
+# qrcode = QRcode(app)
+# JDOODLEID = JDOODLEID
+# JDOODLESECRET = JDOODLESECRET
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -99,15 +99,15 @@ def renderSharedCodes(code_id):
             abort(404, description="Resource not found")
         elif coderes['pin_enabled']:
             if 'key' not in session:
-                return render_template('auth.html', code_id=code_id)
+                return render_template('auth.html', code_id=code_id, create=True)
             else:
                 session.pop('key', None)
                 coderes = updateCodeName(coderes)
-                return render_template('code.html', coderes=coderes, baseurl=request.base_url)
+                return render_template('code.html', coderes=coderes, baseurl=request.base_url, create=True)
         else:
             print(coderes)
             coderes = updateCodeName(coderes)
-            return render_template('code.html', coderes=coderes, baseurl=request.base_url)
+            return render_template('code.html', coderes=coderes, baseurl=request.base_url, create=True)
     else:
         print(code_id)
         coderes = codes.get(code_id)
@@ -120,27 +120,27 @@ def renderSharedCodes(code_id):
             return redirect(url_for('renderSharedCodes', code_id=code_id))
         else:
             flash('Invalid PIN')
-            return render_template('auth.html', code_id=code_id)
+            return render_template('auth.html', code_id=code_id, create=True)
 
 
-@app.route('/showAll', methods=['GET'])
-def showAllCodeFromDatabase():
-    return {"codes": next(codes.fetch({}))}
-
-
-@app.route('/deleteAll', methods=['GET'])
-def deleteAllCodeFromDatabase():
-    toDeleteCodes = next(codes.fetch({}))
-    for i in toDeleteCodes:
-        codes.delete(i['key'])
-    return '{"STATUS":"DELETEDALL"}'
-
-
-@app.route('/deleteCode/<key>', methods=["DELETE"])
-def deleteCodeWithKey(key):
-    print(key)
-    print(codes.delete(key))
-    return '{"STATUS":"DELETED"}'
+# @app.route('/showAll', methods=['GET'])
+# def showAllCodeFromDatabase():
+#     return {"codes": next(codes.fetch({}))}
+#
+#
+# @app.route('/deleteAll', methods=['GET'])
+# def deleteAllCodeFromDatabase():
+#     toDeleteCodes = next(codes.fetch({}))
+#     for i in toDeleteCodes:
+#         codes.delete(i['key'])
+#     return '{"STATUS":"DELETEDALL"}'
+#
+#
+# @app.route('/deleteCode/<key>', methods=["DELETE"])
+# def deleteCodeWithKey(key):
+#     print(key)
+#     print(codes.delete(key))
+#     return '{"STATUS":"DELETED"}'
 
 
 def getExecLanguage(language):
@@ -153,22 +153,29 @@ def getExecLanguage(language):
     elif language == 'C++':
         return 'cpp14'
 
+@app.route('/about',methods=['GET'])
+def about():
+    return render_template('about.html')
 
 @app.route('/execute', methods=['POST'])
 def execute():
     print(request.form)
     data = {}
     language = getExecLanguage(request.form['language'])
-    data['clientId'] = JDOODLEID
-    data['clientSecret'] = JDOODLESECRET
-    data['script'] = request.form['code']
-    data['stdin'] = request.form['input']
-    data['language'] = language
-    data['versionIndex'] = 0
-    
-    output = requests.post(jdoodle_url, json=data).text
-    print(output)
-    return json.loads(output)['output'].replace('\n', ' \r\n ')
+    debug = True
+    if JDOODLEID is None or JDOODLEID is None or debug:
+        return "Setup Proper API"
+    else:
+        data['clientId'] = JDOODLEID
+        data['clientSecret'] = JDOODLESECRET
+        data['script'] = request.form['code']
+        data['stdin'] = request.form['input']
+        data['language'] = language
+        data['versionIndex'] = 0
+
+        output = requests.post(jdoodle_url, json=data).text
+        print(output)
+        return json.loads(output)['output'].replace('\n', ' \r\n ')
 
 
 if __name__ == '__main__':

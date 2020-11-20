@@ -24,13 +24,13 @@
                             <br><br>
                             <img class="qrcode" src="{{ qrcode(baseurl) }}">
                             <br>
-                            <button class="btn btn-outline-success" id="savebutton" type="submit">Save</button>
-                            <button class="btn btn-outline-success" type="button">Execute</button>
+                            <div class="button-row">
+                                <button class="btn btn-outline-success" type="submit">Download</button>
+                                <button class="btn btn-outline-success" type="button">Copy Code</button>
+                            </div>
                             <hr>
-                            <p>*You can also drag and drop a file to the editor
-                            <p>
-                                <br>
-                                <br>
+                            <br>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,8 @@
                     </div>
                     <div class="col-lg-4 col col-sm-12">
                         <label class="textarealabel" for="output">Compiled Output</label>
-                        <textarea id="output" class="compiler2" rows="10" placeholder="" readonly>{{ coderes['output'] }}</textarea>
+                        <textarea id="output" class="compiler2" rows="10" placeholder=""
+                                  readonly>{{ coderes['output'] }}</textarea>
                     </div>
                 </div>
             </div>

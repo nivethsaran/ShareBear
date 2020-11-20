@@ -182,8 +182,8 @@ select:focus,option:hover ,.dropdown:focus{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
 }
 
 
@@ -264,5 +264,10 @@ select:focus,option:hover ,.dropdown:focus{
 .pinlabel{
     color: #9C1A1C;
 }
+
+.button-row{
+    margin-left: 27%;
+}
+
 
 
