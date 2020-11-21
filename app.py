@@ -1,6 +1,6 @@
 import json
 import os
-
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, flash, abort, session
 # from secret import TOKEN, SECRET, JDOODLEID, JDOODLESECRET
 from deta import Deta
@@ -9,6 +9,7 @@ import requests
 
 app = Flask(__name__)
 jdoodle_url = 'https://api.jdoodle.com/v1/execute'
+load_dotenv()
 
 
 @app.errorhandler(404)
@@ -16,13 +17,13 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 
-deta = Deta(os.environ.get('TOKEN'))
+deta = Deta(os.environ['TOKEN'])
 codes = deta.Base("codes")
-app.config['SECRET_KEY'] = os.environ.get('SECRET')
+app.config['SECRET_KEY'] = os.environ['SECRET']
 app.register_error_handler(404, page_not_found)
 qrcode = QRcode(app)
-JDOODLEID = os.environ.get('JDOODLEID')
-JDOODLESECRET = os.environ.get('JDOODLESECRET')
+JDOODLEID = os.environ['JDOODLEID']
+JDOODLESECRET = os.environ['JDOODLESECRET']
 
 
 # deta = Deta(TOKEN)

@@ -2,4 +2,4 @@
 __pycache__/
 venv/
 secret.py
-
+.env
