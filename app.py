@@ -16,13 +16,13 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 
-deta = Deta(os.environ['TOKEN'])
+deta = Deta(os.environ.get('TOKEN'))
 codes = deta.Base("codes")
-app.config['SECRET_KEY'] = os.environ['SECRET']
+app.config['SECRET_KEY'] = os.environ.get('SECRET')
 app.register_error_handler(404, page_not_found)
 qrcode = QRcode(app)
-JDOODLEID = os.environ['JDOODLEID']
-JDOODLESECRET = os.environ['JDOODLESECRET']
+JDOODLEID = os.environ.get('JDOODLEID')
+JDOODLESECRET = os.environ.get('JDOODLESECRET')
 
 
 # deta = Deta(TOKEN)
