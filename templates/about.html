@@ -2,28 +2,21 @@
 
 {% block content %}
 
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ url_for('static', filename='code.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Share Bear</h5>
+
+      <div style="color: white" align="center">
+        <img src="{{ url_for('static',filename='codelogo.png') }}">
+        <h1 >Share Bear</h1>
         <p>Share and execute codes in any platform with ease. </p>
       </div>
+    <h3 align="center">Let us know your suggestions and reviews</h3>
+    <section align="center" class="content contact-us">
+    <p><a target="_blank" href="mailto: nivethsarandev@gmail.com"> nivethsarandev@gmail.com</a> (Developer)</p>
+    <p><a target="_blank" href="https://github.com/nivethsaran/ShareBear"> Github Repo</a> (Open to contributions)</p>
+        <p><a target="_blank" href="https://nivethsaran.github.io"> Developer Portfolio</a></p>
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="nivethsaran" data-color="#40DCA5" data-emoji="" data-font="Lato" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+    <div>
+        <p>Thanks to icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+        </p>
     </div>
-  </div>
-</div>
-    <h1 align="center">Contact Niveth For More Details</h1>
-    <section class="content contact-us">
-    <h5>Contact us</h5>
-    <p><i class="iconfont iconemail"></i><a target="_blank" href="mailto: support@jongde.com"> support@jongde.com</a> (Customer support)</p>
-    <p><i class="iconfont iconemail"></i><a target="_blank" href="mailto: business@jongde.com"> business@jongde.com</a> (Cooperation inquiry)</p>
-    <div class="logos">
-        <a class="face" target="_blank" href="https://www.facebook.com/Mockplus-208416746176601/"><i class="iconfont icon_Facebook"></i></a>
-        <div class="line"></div>
-        <a class="twitter" target="_blank" href="https://twitter.com/Mockplus"><i class="iconfont icon_Twitter"></i></a>
-        <div class="line"></div>
-        <a class="linked" target="_blank" href="https://www.linkedin.com/company/mockplus"><i class="iconfont icon_LinkedIn"></i></a>
-    </div>
-</section>
+    </section>
 {% endblock %}
