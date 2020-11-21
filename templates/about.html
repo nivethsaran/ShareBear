@@ -2,11 +2,28 @@
 
 {% block content %}
 
-<main role="main" class="container ">
-  <div class="starter-template">
-    <h1>Share Bear</h1>
-    <p class="lead">Share and execute codes with ease. </p>
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{ url_for('static', filename='code.jpg') }}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Share Bear</h5>
+        <p>Share and execute codes in any platform with ease. </p>
+      </div>
+    </div>
   </div>
-
-</main>
+</div>
+    <h1 align="center">Contact Niveth For More Details</h1>
+    <section class="content contact-us">
+    <h5>Contact us</h5>
+    <p><i class="iconfont iconemail"></i><a target="_blank" href="mailto: support@jongde.com"> support@jongde.com</a> (Customer support)</p>
+    <p><i class="iconfont iconemail"></i><a target="_blank" href="mailto: business@jongde.com"> business@jongde.com</a> (Cooperation inquiry)</p>
+    <div class="logos">
+        <a class="face" target="_blank" href="https://www.facebook.com/Mockplus-208416746176601/"><i class="iconfont icon_Facebook"></i></a>
+        <div class="line"></div>
+        <a class="twitter" target="_blank" href="https://twitter.com/Mockplus"><i class="iconfont icon_Twitter"></i></a>
+        <div class="line"></div>
+        <a class="linked" target="_blank" href="https://www.linkedin.com/company/mockplus"><i class="iconfont icon_LinkedIn"></i></a>
+    </div>
+</section>
 {% endblock %}
