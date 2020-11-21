@@ -17,3 +17,4 @@ setuptools~=50.3.2
 Flask~=1.1.2
 requests~=2.24.0
 deta~=0.7
+Flask-QRcode~=3.0.0

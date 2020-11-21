@@ -24,6 +24,7 @@ qrcode = QRcode(app)
 JDOODLEID = os.environ['JDOODLEID']
 JDOODLESECRET = os.environ['JDOODLESECRET']
 
+
 # deta = Deta(TOKEN)
 # codes = deta.Base("codes")
 # app.config['SECRET_KEY'] = SECRET
