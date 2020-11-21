@@ -2,7 +2,7 @@ import json
 import os
 
 from flask import Flask, render_template, request, redirect, url_for, flash, abort, session
-from secret import TOKEN, SECRET, JDOODLEID, JDOODLESECRET
+# from secret import TOKEN, SECRET, JDOODLEID, JDOODLESECRET
 from deta import Deta
 from flask_qrcode import QRcode
 import requests
