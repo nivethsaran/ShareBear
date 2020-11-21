@@ -35,7 +35,6 @@ function changeCode() {
     let mode = "text/x-csrc";
     let lang = document.getElementById("languages").value;
     if (lang == "C++") {
-
         mode = "text/x-c++src"
     } else if (lang == "Java") {
         mode = "text/x-java"
@@ -99,7 +98,8 @@ function toggleinput() {
 }
 
 function copyCode() {
-    navigator.clipboard.writeText(editor.getValue()).then(function () {
+    let code = editor.getValue(0)
+    navigator.clipboard.writeText(code).then(function () {
         console.log('Async: Copying to clipboard was successful!');
     }, function (err) {
         console.error('Async: Could not copy text: ', err);
@@ -119,10 +119,10 @@ function enableOrDisablePin() {
 function toggleExecutable() {
     if (document.getElementById("customSwitch2").checked === true) {
         document.getElementById("execution").hidden = false
-        document.getElementById("executebutton").disabled=false
+        document.getElementById("executebutton").disabled = false
     } else {
         document.getElementById("execution").hidden = true
-        document.getElementById("executebutton").disabled=true
+        document.getElementById("executebutton").disabled = true
     }
 }
 
@@ -156,9 +156,7 @@ function executeCode(baseurl) {
     http.onreadystatechange = function () {//Call a function when the state changes.
         if (http.readyState == 4 && http.status == 200) {
             document.getElementById("output").innerHTML = http.responseText
-        }
-        else
-        {
+        } else {
             document.getElementById("output").innerHTML = 'Server Error Try Again Later'
         }
     }
@@ -166,4 +164,17 @@ function executeCode(baseurl) {
     // http.send(JSON.stringify(params));
     http.send(params);
 
+}
+
+function downloadCode(filename) {
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(document.getElementById("code").value));
+    element.setAttribute('download', document.getElementById("codename").value);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
 }

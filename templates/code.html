@@ -16,7 +16,7 @@
                 <div class="col col-lg-4 col-sm-12">
                     <div class="card text-white bg-dark">
                         <div class="card-header border-light ">
-                            <h4 class="font-weight-normal">Options</h4>
+                            <h4 class="font-weight-normal">Details</h4>
                         </div>
                         <div class="card-body">
                             <input id="link" class="shareablelink" type="text" value="{{ baseurl }}" readonly>
@@ -25,8 +25,8 @@
                             <img class="qrcode" src="{{ qrcode(baseurl) }}">
                             <br>
                             <div class="button-row">
-                                <button class="btn btn-outline-success" type="submit">Download</button>
-                                <button class="btn btn-outline-success" type="button">Copy Code</button>
+                                <button onclick="downloadCode()" class="btn btn-outline-success" type="button">Download</button>
+                                <button onclick="copyCode()" class="btn btn-outline-success" type="button">Copy Code</button>
                             </div>
                             <hr>
                             <br>
