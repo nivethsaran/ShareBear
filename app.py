@@ -2,7 +2,6 @@ import json
 import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, flash, abort, session
-# from secret import TOKEN, SECRET, JDOODLEID, JDOODLESECRET
 from deta import Deta
 from flask_qrcode import QRcode
 import requests
@@ -24,15 +23,6 @@ app.register_error_handler(404, page_not_found)
 qrcode = QRcode(app)
 JDOODLEID = os.environ['JDOODLEID']
 JDOODLESECRET = os.environ['JDOODLESECRET']
-
-
-# deta = Deta(TOKEN)
-# codes = deta.Base("codes")
-# app.config['SECRET_KEY'] = SECRET
-# app.register_error_handler(404, page_not_found)
-# qrcode = QRcode(app)
-# JDOODLEID = JDOODLEID
-# JDOODLESECRET = JDOODLESECRET
 
 
 @app.route('/', methods=["GET", "POST"])
