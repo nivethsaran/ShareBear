@@ -38,19 +38,13 @@ def renderMainPage():
         PIN = ''
         pin_enabled = False
         if 'customSwitch1' in request.form:
-            if request.form['customSwitch1'] == 'on':
-                pin_enabled = True
-            else:
-                pin_enabled = False
+            pin_enabled = request.form['customSwitch1'] == 'on'
             PIN = request.form['PIN']
         else:
             pin_enabled = False
         executable = False
         if 'customSwitch2' in request.form:
-            if request.form['customSwitch2'] == 'on':
-                executable = True
-            else:
-                executable = False
+            executable = request.form['customSwitch2'] == 'on'
         else:
             executable = False
 
