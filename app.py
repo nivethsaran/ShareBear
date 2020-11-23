@@ -160,16 +160,19 @@ def execute():
     if JDOODLEID is None or JDOODLEID is None or debug:
         return "Setup Proper API"
     else:
-        data['clientId'] = JDOODLEID
-        data['clientSecret'] = JDOODLESECRET
-        data['script'] = request.form['code']
-        data['stdin'] = request.form['input']
-        data['language'] = language
-        data['versionIndex'] = 0
+        try:
+            data['clientId'] = JDOODLEID
+            data['clientSecret'] = JDOODLESECRET
+            data['script'] = request.form['code']
+            data['stdin'] = request.form['input']
+            data['language'] = language
+            data['versionIndex'] = 0
 
-        output = requests.post(jdoodle_url, json=data).text
-        print(output)
-        return json.loads(output)['output'].replace('\n', ' \r\n ')
+            output = requests.post(jdoodle_url, json=data).text
+            print(output)
+            return json.loads(output)['output'].replace('\n', ' \r\n ')
+        except:
+            return "Unknown error occured. Please try again later"
 
 
 if __name__ == '__main__':
