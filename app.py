@@ -151,7 +151,7 @@ def execute():
     data = {}
     language = getExecLanguage(request.form['language'])
     debug = False
-    if JDOODLEID is None or JDOODLEID is None or debug:
+    if JDOODLEID is None or JDOODLESECRET is None or debug:
         return "Setup Proper API"
     else:
         try:

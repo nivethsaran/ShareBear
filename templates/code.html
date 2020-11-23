@@ -22,7 +22,7 @@
                             <input id="link" class="shareablelink" type="text" value="{{ baseurl }}" readonly>
                             <button id="copybutton" class="copybutton" onclick="copyLink()" type="button">Copy</button>
                             <br><br>
-                            <img class="qrcode" src="{{ qrcode(baseurl) }}">
+                            <img class="qrcode" src="{{ qrcode(baseurl) }}" alt="QR Code">
                             <br>
                             <div class="button-row">
                                 <button onclick="downloadCode()" class="btn btn-outline-success" type="button">Download</button>
