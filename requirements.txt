@@ -1,4 +1,4 @@
-Pillow~=8.0.1
+Pillow~=8.1.1
 pip~=20.2.4
 colorama~=0.4.4
 Jinja2~=2.11.2
