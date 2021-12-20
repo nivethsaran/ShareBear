@@ -1,4 +1,0 @@
-[cli]
-bears = SpaceConsistencyBear,PyLintBear,PEP8Bear,coalaBear
-files = app.py
-use_spaces = True
